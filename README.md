@@ -35,6 +35,19 @@ web site</a>:
 
 ## Loading the data
 
+The plotting files make use of the R file <b>getData.R</b> which
+* Checks if the required data file is in the working directory, 
+if not souce zip file is downloaded and unzipped.
+* Secondlly, <b>getData.R</b> checks id the source data.table is loaded
+already and contains the right number of rows. If not it will load 
+the source data file and filter it, ottherwise it will use the 
+existing data.table <b>hpcData</b> aleady in memory. This saves alot of
+unnecessarry processing.
+* The <i>fread</i> function reads in all the variables as "character" 
+(see <i>colClasses</i> vector) to avoid unnecessary coercions and 
+possible errors when the NA values "?" are encountered. 
+# The conversion to the correct classes is done once the data as been read
+using </i>mutate</i>
 
 
 
