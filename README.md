@@ -1,3 +1,25 @@
+## Solution Notes
+
+The plotting files make use of the R file <b>getData.R</b> which
+* Checks if the required data file is in the working directory, 
+if not the source zip file is downloaded and unzipped.
+* Secondlly, <b>getData.R</b> checks if the source data.table is loaded
+already and contains the right number of rows. If not, it will load 
+the source data file and filter it, otherwise it will use the 
+existing data.table <b>hpcData</b> aleady in memory. This saves alot of
+unnecessary processing.
+* The <i>fread</i> function reads in all the variables as "character" 
+(see <i>colClasses</i> vector) to avoid unnecessary coercions and 
+possible errors when the NA values "?" are encountered. This also 
+suppresses useless warnings from <i>fread</i>
+* The conversion to the correct classes is done once the data as been read
+using </i>mutate</i>
+* A variable DateTime (type: datetime, POSIXct) is created using the Date 
+and Time variables which are then removed from the data.table.
+* For ease of comparison, the solution plots are displayed below next
+to the default plots
+
+
 ## Introduction
 
 This assignment uses data from
@@ -34,23 +56,6 @@ web site</a>:
 </ol>
 
 ## Loading the data
-
-The plotting files make use of the R file <b>getData.R</b> which
-* Checks if the required data file is in the working directory, 
-if not souce zip file is downloaded and unzipped.
-* Secondlly, <b>getData.R</b> checks id the source data.table is loaded
-already and contains the right number of rows. If not it will load 
-the source data file and filter it, ottherwise it will use the 
-existing data.table <b>hpcData</b> aleady in memory. This saves alot of
-unnecessarry processing.
-* The <i>fread</i> function reads in all the variables as "character" 
-(see <i>colClasses</i> vector) to avoid unnecessary coercions and 
-possible errors when the NA values "?" are encountered. 
-# The conversion to the correct classes is done once the data as been read
-using </i>mutate</i>
-
-
-
 
 When loading the dataset into R, please consider the following:
 
@@ -107,21 +112,33 @@ The four plots that you will need to construct are shown below.
 
 ### Plot 1
 
-
 ![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
+
+## My Plot 1
+
+![plot of solution plot1](plot1.png) 
 
 
 ### Plot 2
 
 ![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
 
+## My Plot 2
+
+![plot of solution plot2](plot2.png) 
 
 ### Plot 3
 
 ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
 
+## My Plot 3
+
+![plot of solution plot3](plot3.png) 
 
 ### Plot 4
 
 ![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
 
+## My Plot 4
+
+![plot of solution plot4](plot4.png) 
